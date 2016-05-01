@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PakWai</string>
+    <string name="app_title">記下停車位置</string>
+    <string name="action_settings_1">拍攝平面圖</string>
+    <string name="action_settings_2">使用預設平面圖</string>
+    <string name="tf_label1">樓層</string>
+    <string name="tf_label2">車位號碼</string>
+    <string name="tf_label3">區域</string>
+    <string name="tf_label4">出電梯後方向</string>
+    <string name="tf_editText0_hint">ex: 1</string>
+    <string name="tf_editText1_hint">ex: 123</string>
+    <string name="tf_editText2_hint">ex: A</string>
+    <string name="tf_editText3_hint">ex: 正前</string>
+    <string name="tf_record_text_hint">．．．未有過往記錄．．．</string>
+    <string name="tf_record_btn_label">記錄</string>
+    <string name="tf_clear_btn_label">清除記錄</string>
+    <string name="dialog_3x3_toggleButton1_text">左後</string>
+    <string name="dialog_3x3_toggleButton2_text">正後</string>
+    <string name="dialog_3x3_toggleButton3_text">右後</string>
+    <string name="dialog_3x3_toggleButton4_text">左</string>
+    <string name="dialog_3x3_toggleButton6_text">右</string>
+    <string name="dialog_3x3_toggleButton7_text">左前</string>
+    <string name="dialog_3x3_toggleButton8_text">正前</string>
+    <string name="dialog_3x3_toggleButton9_text">右前</string>
+    <string name="mf_photo_btn_description">拍照</string>
+    <string name="mf_clear_btn_description">清除</string>
+    <string name="mf_level_btn_description">停車的樓層</string>
+    <string name="mf_save_btn_description">記錄</string>
+    <string name="dialog_np_title">停車的樓層</string>
+    <string name="dialog_area_title">停車的區域</string>
+    <string name="dialog_direction_title">出電梯後車的方向</string>
+    <string name="dialog_np_button_label">確認</string>
+    <string name="dialog_area_button_label">確認</string>
+    <string name="tf_record_null_hint">請輸入資料</string>
+    <string name="mf_record_null_hint">請在圖上點出停車位置</string>
+    <string name="mf_time_text_hint">請在圖上點出停車位置</string>
+</resources>

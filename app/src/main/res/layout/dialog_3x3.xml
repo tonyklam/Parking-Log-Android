@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginTop="4dp"
+        android:id="@+id/dialog_3x3_table">
+        <TableRow>
+            <FrameLayout
+                android:layout_weight="1"
+                android:layout_width="0px"
+                android:layout_height="match_parent">
+                <ToggleButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textOff="@string/dialog_3x3_toggleButton7_text"
+                    android:textOn="@string/dialog_3x3_toggleButton7_text"
+                    android:id="@+id/dialog_3x3_toggleButton_7"  />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_weight="1"
+                android:layout_width="0px"
+                android:layout_height="match_parent">
+                <ToggleButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textOff="@string/dialog_3x3_toggleButton8_text"
+                    android:textOn="@string/dialog_3x3_toggleButton8_text"
+                    android:id="@+id/dialog_3x3_toggleButton_8"  />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_weight="1"
+                android:layout_width="0px"
+                android:layout_height="match_parent">
+                <ToggleButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textOff="@string/dialog_3x3_toggleButton9_text"
+                    android:textOn="@string/dialog_3x3_toggleButton9_text"
+                    android:id="@+id/dialog_3x3_toggleButton_9"  />
+            </FrameLayout>
+
+        </TableRow>
+
+        <TableRow>
+            <FrameLayout
+                android:layout_weight="1"
+                android:layout_width="0px"
+                android:layout_height="match_parent">
+                <ToggleButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textOff="@string/dialog_3x3_toggleButton4_text"
+                    android:textOn="@string/dialog_3x3_toggleButton4_text"
+                    android:id="@+id/dialog_3x3_toggleButton_4"  />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_weight="1"
+                android:layout_width="0px"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tf_imageView1"
+                    android:src="@drawable/dialog_3x3_center_icon"
+                    android:layout_gravity="center" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_weight="1"
+                android:layout_width="0px"
+                android:layout_height="match_parent">
+                <ToggleButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textOff="@string/dialog_3x3_toggleButton6_text"
+                    android:textOn="@string/dialog_3x3_toggleButton6_text"
+                    android:id="@+id/dialog_3x3_toggleButton_6"  />
+            </FrameLayout>
+
+        </TableRow>
+        <TableRow>
+            <FrameLayout
+                android:layout_weight="1"
+                android:layout_width="0px"
+                android:layout_height="match_parent">
+                <ToggleButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textOff="@string/dialog_3x3_toggleButton1_text"
+                    android:textOn="@string/dialog_3x3_toggleButton1_text"
+                    android:id="@+id/dialog_3x3_toggleButton_1"  />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_weight="1"
+                android:layout_width="0px"
+                android:layout_height="match_parent">
+                <ToggleButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textOff="@string/dialog_3x3_toggleButton2_text"
+                    android:textOn="@string/dialog_3x3_toggleButton2_text"
+                    android:id="@+id/dialog_3x3_toggleButton_2"  />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_weight="1"
+                android:layout_width="0px"
+                android:layout_height="match_parent">
+                <ToggleButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textOff="@string/dialog_3x3_toggleButton3_text"
+                    android:textOn="@string/dialog_3x3_toggleButton3_text"
+                    android:id="@+id/dialog_3x3_toggleButton_3"  />
+            </FrameLayout>
+        </TableRow>
+    </TableLayout>
+    <Button
+        android:id="@+id/dialog_3x3_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dialog_3x3_table"
+        android:layout_gravity="center"
+        android:text="@string/dialog_np_button_label" />
+
+</LinearLayout>
