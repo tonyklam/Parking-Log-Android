@@ -1,4 +1,4 @@
-package com.a4dmacau.pakwai;
+package com.com_4dmacau.parkinglog;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -17,7 +17,7 @@ public class DBHandler extends SQLiteOpenHelper {
     // Database Version
     private static final int DATABASE_VERSION = 1;
     // Database Name
-    private static final String DATABASE_NAME = "pakwai";
+    private static final String DATABASE_NAME = "parkinglog";
     // Table Names
     private static final String TABLE_TEXT = "table_text";
     private static final String TABLE_MAP = "table_map";
@@ -95,6 +95,12 @@ public class DBHandler extends SQLiteOpenHelper {
     public void clear_All_Map_Record() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_MAP, null, null);
+        db.close();
+    }
+
+    public void delete_Text_Record(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_TEXT, KEY_ID + "=" + id, null);
         db.close();
     }
 

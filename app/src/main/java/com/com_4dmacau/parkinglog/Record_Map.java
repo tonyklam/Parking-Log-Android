@@ -1,4 +1,4 @@
-package com.a4dmacau.pakwai;
+package com.com_4dmacau.parkinglog;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -93,8 +93,6 @@ public class Record_Map {
 
         String output_txt = "";
 
-        //output_txt += ""
-
-        return output_txt + "。\n";
+        return output_txt;
     }
 }

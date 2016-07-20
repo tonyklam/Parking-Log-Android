@@ -1,4 +1,4 @@
-package com.a4dmacau.pakwai;
+package com.com_4dmacau.parkinglog;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

@@ -5,20 +5,11 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:orientation="horizontal"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="left"
         android:id="@+id/mf_top_layout">
-
-        <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:src="@drawable/mf_clear_icon"
-            android:id="@+id/mf_clear_btn"
-            android:background="@null"
-            android:contentDescription= "@string/mf_clear_btn_description"/>
 
         <ImageButton
             android:layout_width="40dp"
@@ -28,17 +19,34 @@
             android:src="@drawable/num_q_icon"
             android:id="@+id/mf_level_btn"
             android:background="@null"
-            android:contentDescription= "@string/mf_level_btn_description"/>
+            android:contentDescription= "@string/mf_level_btn_description"
+            android:scaleType="fitXY"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="right">
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/mf_clear_icon"
+                android:id="@+id/mf_clear_btn"
+                android:background="@null"
+                android:contentDescription= "@string/mf_clear_btn_description"
+                android:scaleType="fitXY" />
 
-        <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:src="@drawable/mf_save_icon"
-            android:id="@+id/mf_save_btn"
-            android:background="@null"
-            android:contentDescription="@string/mf_save_btn_description"/>
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/mf_save_icon"
+                android:id="@+id/mf_save_btn"
+                android:background="@null"
+                android:contentDescription="@string/mf_save_btn_description"
+                android:scaleType="fitXY"/>
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -52,8 +60,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:hint="@string/mf_time_text_hint"
-            android:id="@+id/mf_time_text" />
+            android:textColor="#000000"
+            android:hint="@string/mf_text_hint_1"
+            android:id="@+id/mf_time_text"
+            android:textIsSelectable="false"
+            android:textAlignment="center" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
@@ -64,13 +75,13 @@
         android:layout_width="match_parent"
         android:id="@+id/mf_relative_layout"
         android:layout_height="match_parent"
-        android:padding="20px">
+        android:padding="20dp">
 
         <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/mf_bg_image"
-            android:scaleType="centerCrop" />
+            android:scaleType="matrix" />
 
     </RelativeLayout>
     </LinearLayout>

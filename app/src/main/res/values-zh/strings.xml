@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Parking Log</string>
+    <string name="app_title">Parking Log 停車記錄</string>
+    <string name="shared_preference_saved_file_path">file_path</string>
+    <string name="shared_preference_saved_file_exists">file_exists</string>
+    <string name="action_settings_1">拍攝平面圖</string>
+    <string name="action_settings_2">使用預設平面圖</string>
+    <string name="tf_label1">樓層</string>
+    <string name="tf_label2">車位號碼</string>
+    <string name="tf_label3">區域</string>
+    <string name="tf_label4">出電梯後方向</string>
+    <string name="tf_floor_text_hint">ex: 1</string>
+    <string name="tf_space_text_hint">ex: 123</string>
+    <string name="tf_area_text_hint">ex: A</string>
+    <string name="tf_direction_text_hint">ex: 正前</string>
+    <string name="tf_record_text_hint">．．．．請輸入停車資料．．．．</string>
+    <string name="tf_record_btn_label">記錄</string>
+    <string name="tf_clear_btn_label">清除記錄</string>
+    <string name="dialog_3x3_toggleButton1_text">左後</string>
+    <string name="dialog_3x3_toggleButton2_text">正後</string>
+    <string name="dialog_3x3_toggleButton3_text">右後</string>
+    <string name="dialog_3x3_toggleButton4_text">左</string>
+    <string name="dialog_3x3_toggleButton6_text">右</string>
+    <string name="dialog_3x3_toggleButton7_text">左前</string>
+    <string name="dialog_3x3_toggleButton8_text">正前</string>
+    <string name="dialog_3x3_toggleButton9_text">右前</string>
+    <string name="mf_photo_btn_description">拍照</string>
+    <string name="mf_clear_btn_description">清除</string>
+    <string name="mf_level_btn_description">停車的樓層</string>
+    <string name="mf_save_btn_description">記錄</string>
+    <string name="tf_clear_btn_description">清除</string>
+    <string name="tf_save_btn_description">記錄</string>
+    <string name="lv_clear_btn_description">清除此項資料</string>
+    <string name="dialog_np_title">停車的樓層</string>
+    <string name="dialog_area_title">停車的區域</string>
+    <string name="dialog_direction_title">出電梯後車的方向</string>
+    <string name="dialog_np_button_label">確認</string>
+    <string name="dialog_area_button_label">確認</string>
+    <string name="tf_record_null_hint">請輸入資料</string>
+    <string name="mf_record_null_hint">請在圖上點出停車位置</string>
+    <string name="mf_text_hint_1">請點出停車位置，或長按後向左滑動</string>
+    <string name="mf_text_hint_2">按右上角圖示儲存記錄</string>
+    <string name="mf_time_text_1">%1$s 停於下圖位置</string>
+    <string name="mf_time_text_2">%1$s 停於%2$s樓下圖位置"</string>
+    <string-array name="record_text_direction_from_lift_string_array">
+        <item>左後</item>
+        <item>正後</item>
+        <item>右後</item>
+        <item>左</item>
+        <item>右</item>
+        <item>左前</item>
+        <item>正前</item>
+        <item>右前</item>
+    </string-array>
+    <string name="record_text_description_1">停於</string>
+    <string name="record_text_description_2">%1$s樓</string>
+    <string name="record_text_description_3">%1$s區</string>
+    <string name="record_text_description_4">%1$s號車位</string>
+    <string name="record_text_description_5">出電梯後%1$s方</string>
+    <string name="comma">，</string>
+    <string name="period">。</string>
+</resources>

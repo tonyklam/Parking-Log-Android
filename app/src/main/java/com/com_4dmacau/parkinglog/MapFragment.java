@@ -1,9 +1,9 @@
-package com.a4dmacau.pakwai;
+package com.com_4dmacau.parkinglog;
 
-import android.Manifest;
-import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -13,12 +13,9 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.MediaStore;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.text.method.Touch;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,6 +23,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -36,7 +34,6 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -62,6 +59,15 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
     float Pin_x;
     float Pin_y;
     private static final float PIN_NOT_INPUT = -99f;
+
+    // 1 of 4 for bg_image Zoom
+    /*
+    private final static float mMinZoom = 1.f;
+    private final static float mMaxZoom = 3.f;
+    private float mScaleFactor = 1.f;
+    private ScaleGestureDetector mScaleGestureDetector;
+    private Matrix matrix = new Matrix();
+    */
 
     View view;
     RelativeLayout mf_relative_layout;
@@ -96,8 +102,24 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
 
         time_text = (TextView)view.findViewById(R.id.mf_time_text);
 
-        bg_image.setBackgroundResource(R.drawable.mf_background_0);
 
+        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+
+        String photo_file_path = Uri.parse(sharedPref.getString(getString(R.string.shared_preference_saved_file_path),"")).getPath();
+        File photo_file = new File(photo_file_path);
+
+        if ( sharedPref.getBoolean(getString(R.string.shared_preference_saved_file_exists), false) && photo_file.exists() )
+        {
+            file = Uri.parse(photo_file_path);
+            Set_Bg_Image();
+        }
+        else
+        {
+            bg_image.setBackgroundResource(R.drawable.mf_background_0);
+        }
+
+        // 2 of 4 for bg_image Zoom
+        //mScaleGestureDetector = new ScaleGestureDetector(getContext(), new ScaleListener());
 
         /*
         //Taking Photo with an ImageButton named "photo_btn"
@@ -175,7 +197,7 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
 
                 level_btn.setImageResource(R.drawable.num_q_icon);
                 time_text.setText("");
-                time_text.setHint(getResources().getString(R.string.mf_time_text_hint));
+                time_text.setHint(getResources().getString(R.string.mf_text_hint_1));
             }
         });
 
@@ -191,16 +213,16 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
 
                 final NumberPicker np = (NumberPicker)d_np.findViewById(R.id.dialog_np_np);
                 np.setMinValue(0);
-                np.setMaxValue(10);
-                np.setDisplayedValues( new String[] { "-4", "-3", "-2", "-1", "0", "1", "2", "3","4","5","6" } );
-                np.setValue(4);
+                np.setMaxValue(15);
+                np.setDisplayedValues( new String[] { "-6","-5","-4","-3","-2","-1","0","1","2","3","4","5","6","7","8","9" } );
+                np.setValue(6);
                 np.setWrapSelectorWheel(false);
 
                 btn.setOnClickListener(new View.OnClickListener()
                 {
                     @Override
                     public void onClick(View v) {
-                        setFloor(np.getValue()-4);
+                        setFloor(np.getValue()-6);
 
                         d_np.dismiss();
                     }
@@ -231,12 +253,11 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
                     record_map.setPin_x(Float.toString(Pin_x));
                     record_map.setPin_y(Float.toString(Pin_y));
 
-                    String temp_string = "Recording X:" + Pin_x + ", Y:" + Pin_y;
-                    Toast.makeText(getActivity().getApplicationContext(), temp_string, Toast.LENGTH_LONG).show();
-
                     ((MainActivity)getActivity()).db.clear_All_Map_Record();
 
                     ((MainActivity)getActivity()).db.add_Map_Record(record_map);
+
+                    Set_Time_Text(record_map.getTime());
                 }
             }
         });
@@ -246,9 +267,49 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
         return view;
     }
 
+    private void Set_Time_Text(String time)
+    {
+        if ( floor == FLOOR_NOT_INPUT )
+        {
+            time_text.setText(getString(R.string.mf_time_text_1, time));
+        }
+        else
+        {
+            time_text.setText(getString(R.string.mf_time_text_2, time, String.valueOf(floor)));
+        }
+    }
+
+
+    // 3 of 4 for bg_image Zoom
+    /*
+    private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
+        @Override
+        public boolean onScale(ScaleGestureDetector detector) {
+
+            mScaleFactor *= detector.getScaleFactor();
+            mScaleFactor = Math.max(mMinZoom, Math.min(mMaxZoom, mScaleFactor));
+
+            //matrix.setScale(mScaleFactor, mScaleFactor);
+            //bg_image.setImageMatrix(matrix);
+
+            bg_image.setScaleX(mScaleFactor);
+            bg_image.setScaleY(mScaleFactor);
+
+            return true;
+        }
+    }
+    */
+
+
     public void setFloor(int target_floor)
     {
         switch (target_floor) {
+            case -6:
+                level_btn.setImageResource(R.drawable.num_n6_icon);
+                break;
+            case -5:
+                level_btn.setImageResource(R.drawable.num_n5_icon);
+                break;
             case -4:
                 level_btn.setImageResource(R.drawable.num_n4_icon);
                 break;
@@ -282,13 +343,22 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
             case 6:
                 level_btn.setImageResource(R.drawable.num_6_icon);
                 break;
+            case 7:
+                level_btn.setImageResource(R.drawable.num_7_icon);
+                break;
+            case 8:
+                level_btn.setImageResource(R.drawable.num_8_icon);
+                break;
+            case 9:
+                level_btn.setImageResource(R.drawable.num_9_icon);
+                break;
         }
         floor = target_floor;
     }
 
     public void DeterminePinSize(int id)
     {
-        BitmapDrawable bd = (BitmapDrawable) ContextCompat.getDrawable(getContext(), id);
+        BitmapDrawable bd = (BitmapDrawable)ContextCompat.getDrawable(getContext(), id);
 
         Pin_Height=bd.getBitmap().getHeight();
         Pin_Width=bd.getBitmap().getWidth();
@@ -297,10 +367,20 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
     public ImageView DrawPin(float x, float y, int id)
     {
         if (Pin_Height == 0){
-            DeterminePinSize(id);
+            //DeterminePinSize(id);
+
+            // To determine Width and Height with scale according to screen
+            final float scale = getResources().getDisplayMetrics().density;
+            Pin_Width = (int)(35*scale + 0.5f);
+            Pin_Height = (int)(35*scale + 0.5f);
         }
         ImageView image = new ImageView(getActivity());
         image.setBackgroundResource(id);
+
+        // To resize ImageView with scale according to screen
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(Pin_Width, Pin_Height);
+        image.setLayoutParams(params);
+
         image.setX(x - Pin_Width/2);
         image.setY(y - Pin_Height/2);
 
@@ -327,6 +407,9 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
 
     public boolean onTouch(View v, MotionEvent e)
     {
+        // 4 of 4 for bg_image Zoom
+        //mScaleGestureDetector.onTouchEvent(e);
+
         switch (e.getAction()) {
             case MotionEvent.ACTION_DOWN: {
                 pressStartTime = System.currentTimeMillis();
@@ -339,6 +422,7 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
                 if (pressDuration < MAX_CLICK_DURATION && distance(Touch_X, Touch_Y, e.getX(), e.getY()) < MAX_CLICK_DISTANCE) {
                     // Click event has occurred
                     PutPin(Touch_X, Touch_Y, Pin_Id);
+                    time_text.setHint(getResources().getString(R.string.mf_text_hint_2));
                 }
                 break;
             }
@@ -375,6 +459,7 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
 
         if (requestCode == 100) {
             if (resultCode == getActivity().RESULT_OK) {
+                SaveSharedPreference(true);
                 galleryAddPic();
                 Set_Bg_Image();
             }
@@ -395,11 +480,6 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
         int photoW = bmOptions.outWidth;
         int photoH = bmOptions.outHeight;
 
-        /*
-        String temp_string = "Target Width = " + Integer.toString(targetW) + ", Height = "+Integer.toString(targetH);
-        Toast.makeText(getActivity().getApplicationContext(), temp_string, Toast.LENGTH_LONG).show();
-        */
-
         Matrix matrix = new Matrix();
         matrix.postRotate(90);
 
@@ -410,9 +490,14 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
         //Remove original background
         bg_image.setBackgroundColor(Color.TRANSPARENT);
 
-        bg_image.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        bg_image.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
         bg_image.setImageBitmap(bitmap);
+    }
+
+    private void SaveSharedPreference(Boolean file_exists)
+    {
+        //See function with same name in MainActivity for reference
     }
 
     private static File getOutputMediaFile() throws IOException{
@@ -448,7 +533,7 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
 
             setFloor(current_map_record.getFloor_as_int());
 
-            time_text.setText(current_map_record.getTime()+"停於下圖位置");
+            Set_Time_Text(current_map_record.getTime());
 
             //SetActionBarText(current_map_record.getTime()+"停於下圖位置");
         }

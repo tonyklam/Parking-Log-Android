@@ -1,6 +1,8 @@
-package com.a4dmacau.pakwai;
+package com.com_4dmacau.parkinglog;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -18,7 +20,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     Uri file;
     DBHandler db;
+    SharedPreferences sharedPref;
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -53,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Only 1 shared preference file
+        sharedPref = getPreferences(Context.MODE_PRIVATE);
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -82,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
 
         switch (id) {
             case R.id.action_settings_1:
-                String temp_string = getString(R.string.action_settings_1);
-                Toast.makeText(getApplicationContext(), temp_string, Toast.LENGTH_LONG).show();
+                //String temp_string = getString(R.string.action_settings_1);
+                //Toast.makeText(getApplicationContext(), temp_string, Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 try{
                     file = Uri.fromFile(getOutputMediaFile());
@@ -103,11 +107,12 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
             case R.id.action_settings_2:
-                temp_string = getString(R.string.action_settings_2);
-                Toast.makeText(getApplicationContext(), temp_string, Toast.LENGTH_LONG).show();
+                //temp_string = getString(R.string.action_settings_2);
+                //Toast.makeText(getApplicationContext(), temp_string, Toast.LENGTH_LONG).show();
                 ImageView bg_image = (ImageView)findViewById(R.id.mf_bg_image);
                 bg_image.setImageResource(android.R.color.transparent);
                 bg_image.setBackgroundResource(R.drawable.mf_background_0);
+                SaveSharedPreference(false);
                 break;
             default:
                 return super.onOptionsItemSelected(item);
@@ -177,6 +182,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (requestCode == 100) {
             if (resultCode == RESULT_OK) {
+                SaveSharedPreference(true);
                 galleryAddPic();
                 Set_Bg_Image();
             }
@@ -186,6 +192,22 @@ public class MainActivity extends AppCompatActivity {
         * super.onActivityResult(requestCode, resultCode, data);
         */
     }
+
+        private void SaveSharedPreference(Boolean file_exists)
+        {
+            SharedPreferences.Editor editor = sharedPref.edit();
+            if ( file_exists )
+            {
+                editor.putString(getString(R.string.shared_preference_saved_file_path), file.toString());
+                editor.putBoolean(getString(R.string.shared_preference_saved_file_exists), true);
+            }
+            else
+            {
+                editor.putString(getString(R.string.shared_preference_saved_file_path), "");
+                editor.putBoolean(getString(R.string.shared_preference_saved_file_exists), false);
+            }
+            editor.commit();
+        }
 
     private static File getOutputMediaFile() throws IOException{
 
@@ -217,11 +239,6 @@ public class MainActivity extends AppCompatActivity {
         int photoW = bmOptions.outWidth;
         int photoH = bmOptions.outHeight;
 
-        /*
-        String temp_string = "Target Width = " + Integer.toString(targetW) + ", Height = "+Integer.toString(targetH);
-        Toast.makeText(getActivity().getApplicationContext(), temp_string, Toast.LENGTH_LONG).show();
-        */
-
         Matrix matrix = new Matrix();
         matrix.postRotate(90);
 
@@ -232,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
         //Remove original background
         bg_image.setBackgroundColor(Color.TRANSPARENT);
 
-        bg_image.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        bg_image.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
         bg_image.setImageBitmap(bitmap);
     }

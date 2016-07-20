@@ -1,4 +1,4 @@
-package com.a4dmacau.pakwai;
+package com.com_4dmacau.parkinglog;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

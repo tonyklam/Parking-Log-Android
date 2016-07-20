@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground">
+    android:background="@color/colorBackground"
+    android:padding="5dp"
+    android:gravity="center_vertical|top">
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -15,20 +17,33 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="#000000"
                         android:text="@string/tf_label1"
-                        android:id="@+id/tf_label1"/>
+                        android:id="@+id/tf_label1"
+                        android:gravity="right"
+                        android:paddingRight="5dp"/>
 
                     <EditText
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:inputType="number"
-                        android:ems="10"
-                        android:hint="@string/tf_editText0_hint"
-                        android:id="@+id/tf_editText0"
+                        android:hint="@string/tf_floor_text_hint"
+                        android:textColor="#000000"
+                        android:id="@+id/tf_floor_text"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
-                        android:clickable="true"/>
+                        android:clickable="true" />
+
+                    <ImageButton
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/mf_clear_icon"
+                        android:id="@+id/tf_floor_text_clear_btn"
+                        android:background="@null"
+                        android:contentDescription="@string/tf_clear_btn_description"
+                        android:scaleType="fitXY" />
+
                 </LinearLayout>
 
     <LinearLayout
@@ -42,18 +57,32 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="#000000"
                             android:text="@string/tf_label2"
-                            android:id="@+id/tf_label2" />
+                            android:id="@+id/tf_label2"
+                            android:gravity="right"
+                            android:paddingRight="5dp"/>
 
-                        <EditText
+
+        <EditText
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:maxLines="1"
                         android:imeOptions="actionDone"
-                        android:hint="@string/tf_editText1_hint"
-                        android:id="@+id/tf_editText1"
-                        android:inputType="number" />
+                        android:hint="@string/tf_space_text_hint"
+                        android:id="@+id/tf_space_text"
+                        android:inputType="textNoSuggestions"
+                            android:maxLength="5" />
+
+                        <ImageButton
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/mf_clear_icon"
+                        android:id="@+id/tf_space_text_clear_btn"
+                        android:background="@null"
+                        android:contentDescription="@string/tf_clear_btn_description"
+                        android:scaleType="fitXY" />
 </LinearLayout>
 
     <LinearLayout
@@ -69,8 +98,11 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#000000"
         android:text="@string/tf_label3"
-        android:id="@+id/tf_label3" />
+        android:id="@+id/tf_label3"
+        android:gravity="right"
+        android:paddingRight="5dp"/>
 
                         <EditText
                             android:layout_width="0dp"
@@ -78,12 +110,22 @@
                             android:layout_weight="2"
                             android:maxLines="1"
                             android:imeOptions="actionDone"
-                            android:hint="@string/tf_editText2_hint"
-                            android:id="@+id/tf_editText2"
+                            android:hint="@string/tf_area_text_hint"
+                            android:id="@+id/tf_area_text"
                             android:inputType="textCapCharacters"
                             android:focusable="false"
                             android:focusableInTouchMode="false"
-                            android:clickable="true"/>
+                            android:clickable="true" />
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/mf_clear_icon"
+            android:id="@+id/tf_area_text_clear_btn"
+            android:background="@null"
+            android:contentDescription="@string/tf_clear_btn_description"
+            android:scaleType="fitXY" />
+
 
       </LinearLayout>
     <LinearLayout
@@ -97,21 +139,33 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#000000"
         android:text="@string/tf_label4"
         android:id="@+id/tf_label4"
-        />
+        android:gravity="right"
+        android:paddingRight="5dp"
+        android:maxLines="1" />
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:maxLines="1"
             android:imeOptions="actionDone"
-            android:hint="@string/tf_editText3_hint"
-            android:id="@+id/tf_editText3"
+            android:hint="@string/tf_direction_text_hint"
+            android:id="@+id/tf_direction_text"
             android:inputType="textCapCharacters"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:clickable="true"/>
+            android:clickable="true" />
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/mf_clear_icon"
+            android:id="@+id/tf_direction_text_clear_btn"
+            android:background="@null"
+            android:contentDescription="@string/tf_clear_btn_description"
+            android:scaleType="fitXY" />
 
         </LinearLayout>
 
@@ -120,29 +174,35 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:gravity="center">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tf_record_btn_label"
-            android:id="@+id/tf_record_btn" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tf_clear_btn_label"
-            android:id="@+id/tf_clear_btn" />
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/mf_clear_icon"
+            android:id="@+id/tf_clear_btn"
+            android:background="@null"
+            android:contentDescription="@string/tf_clear_btn_description"
+            android:scaleType="fitXY" />
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/mf_save_icon"
+            android:id="@+id/tf_record_btn"
+            android:background="@null"
+            android:contentDescription="@string/tf_save_btn_description"
+            android:scaleType="fitXY"/>
     </LinearLayout>
 
-    <TextView
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:hint="@string/tf_record_text_hint"
-        android:id="@+id/tf_Record_Text"
-        android:layout_marginTop="4dp"/>
-
+        android:id="@+id/tf_listView"
+        android:paddingBottom="50dp"/>
 
 
 </LinearLayout>

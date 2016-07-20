@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "com.a4dmacau.pakwai"
+        applicationId "com.com_4dmacau.parkinglog"
         minSdkVersion 13
         targetSdkVersion 23
         versionCode 1

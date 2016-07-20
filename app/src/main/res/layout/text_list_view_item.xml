@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="105dp">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="105dp"
+    android:paddingTop="5dp"
+    android:background="@drawable/text_list_view_item_background">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="2016-05-05 16:58"
+            android:id="@+id/lv_time_textView"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:id="@+id/lv_info_linear_layout">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/lv_floor_imageView"
+            android:src="@drawable/num_0_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="A"
+            android:id="@+id/lv_area_textView"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/area_icon_background"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:paddingTop="2dp"
+            android:paddingLeft="5dp"
+            android:textStyle="bold"
+            android:gravity="center_vertical|center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="123"
+            android:id="@+id/lv_space_num_textView"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/space_number_background"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:paddingTop="4dp"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/lv_direction_from_lift_imageView"
+            android:src="@drawable/direction_8_icon"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="停於0層A區123號車位，出電梯後向正前方走"
+            android:id="@+id/lv_description_textView"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</LinearLayout>
+
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/mf_clear_icon"
+        android:id="@+id/lv_clear_btn"
+        android:background="@null"
+        android:contentDescription="@string/lv_clear_btn_description"
+        android:scaleType="fitXY" />
+
+</RelativeLayout>
